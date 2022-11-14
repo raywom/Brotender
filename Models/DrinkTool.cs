@@ -2,6 +2,7 @@
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Brotender.Models;
+
 [Table("drink_tools")]
 public class DrinkTool
 {
@@ -11,12 +12,10 @@ public class DrinkTool
         DrinkId = drinkId;
         ToolId = toolId;
     }
-    [Key]
-    [Column("id")]
-    public int Id { get; set; }
-    [Required]
-    public Drink Drink { get; set; }
-    public int DrinkId { get; set; }
-    public Tool Tool { get; set; }
-    public int ToolId { get; set; }
+
+    [Key] [Column("id")] public int Id { get; set; }
+    public Drink Drink;
+    [Column("drink_id")] public int DrinkId { get; set; }
+    public Tool Tool;
+    [Column("tool_id")] public int ToolId { get; set; }
 }

@@ -2,6 +2,7 @@
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Brotender.Models;
+
 [Table("tools")]
 public class Tool
 {
@@ -12,12 +13,10 @@ public class Tool
         Description = description;
         ImageUrl = imageUrl;
     }
-    [Key]
-    [Column("id")]
-    public int Id { get; set; }
-    [Required]
-    public string Name { get; set; }
+
+    [Key] [Column("id")] public int Id { get; set; }
+    [Required] public string Name { get; set; }
     public string Description { get; set; }
-    public string ImageUrl { get; set; }
-    public ICollection<DrinkTool> DrinkTools { get; set; }
+    [Column("image_url")] public string ImageUrl { get; set; }
+    [NotMapped] public ICollection<DrinkTool> DrinkTools;
 }

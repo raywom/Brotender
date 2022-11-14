@@ -13,10 +13,13 @@ public class DrinkIngredient
     [Key]
     [Column("id")]
     public int Id { get; set; }
-    [Required]
-    public Drink Drink { get; set; }
+
+    [NotMapped] public Drink Drink;
+    [Column("drink_id")]
     public int DrinkId { get; set; }
-    public Ingredient Ingredient { get; set; }
+
+    [NotMapped] public Ingredient Ingredient;
+    [Column("ingredient_id")]
     public int IngredientId { get; set; }
     public float Amount { get; set; }
 }

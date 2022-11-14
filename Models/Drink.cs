@@ -6,16 +6,6 @@ namespace Brotender.Models;
 [Table("Drinks")]
 public class Drink
 {
-    public Drink(int id, string name, string description, string taste, string preparation, bool isUserAdded, string imageUrl)
-    {
-        Id = id;
-        Name = name;
-        Description = description;
-        Taste = taste;
-        Preparation = preparation;
-        IsUserAdded = isUserAdded;
-        ImageUrl = imageUrl;
-    }
     [Key]
     [Column("id")]
     public int Id { get; set; }
@@ -28,7 +18,10 @@ public class Drink
     public bool IsUserAdded { get; set; }
     [Column("image_url")]
     public string ImageUrl { get; set; }
-    public ICollection<DrinkIngredient> DrinkIngredients { get; set; }
-    public ICollection<DrinkRating> DrinkRatings { get; set; }
-    public ICollection<DrinkTool> DrinkTools { get; set; }
+
+    public ICollection<DrinkIngredient> DrinkIngredients;
+
+    [NotMapped] public ICollection<DrinkRating> DrinkRatings;
+
+    [NotMapped] public ICollection<DrinkTool> DrinkTools;
 }

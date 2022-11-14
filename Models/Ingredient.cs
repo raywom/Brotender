@@ -2,6 +2,7 @@
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Brotender.Models;
+
 [Table("ingredients")]
 public class Ingredient
 {
@@ -13,13 +14,11 @@ public class Ingredient
         ImageUrl = imageUrl;
         IsAlcohol = isAlcohol;
     }
-    [Key]
-    [Column("id")]
-    public int Id { get; set; }
-    [Required]
-    public string Name { get; set; }
+
+    [Key] [Column("id")] public int Id { get; set; }
+    [Required] public string Name { get; set; }
     public string Description { get; set; }
-    public string ImageUrl { get; set; }
-    public short IsAlcohol { get; set; }
-    public ICollection<DrinkIngredient> DrinkIngredients { get; set; }
+    [Column("image_url")] public string ImageUrl { get; set; }
+    [Column("is_alcohol")] public short IsAlcohol { get; set; }
+    [NotMapped] public ICollection<DrinkIngredient> DrinkIngredients;
 }
