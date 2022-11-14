@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using Brotender.Models;
 
 namespace Brotender;
-[Table("drink_ingredients")]
+[Table("drink_rating")]
 public class DrinkRating
 {
     public DrinkRating(int id, int rating)

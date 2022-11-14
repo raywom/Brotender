@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Brotender.Models;
-[Table("drink_toolss")]
+[Table("drink_tools")]
 public class DrinkTool
 {
     public DrinkTool(int id, int drinkId, int toolId)
