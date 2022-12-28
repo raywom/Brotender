@@ -16,6 +16,7 @@ public class DrinkTool
     [Key] [Column("id")] public int Id { get; set; }
     public Drink Drink;
     [Column("drink_id")] public int DrinkId { get; set; }
-    public Tool Tool;
+    public Tool Tool { get; set; }
     [Column("tool_id")] public int ToolId { get; set; }
+    
 }

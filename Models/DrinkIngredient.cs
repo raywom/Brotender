@@ -18,7 +18,7 @@ public class DrinkIngredient
     [Column("drink_id")]
     public int DrinkId { get; set; }
 
-    [NotMapped] public Ingredient Ingredient;
+    public Ingredient Ingredient { get; set; }
     [Column("ingredient_id")]
     public int IngredientId { get; set; }
     public float Amount { get; set; }

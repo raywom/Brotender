@@ -18,5 +18,4 @@ public class Tool
     [Required] public string Name { get; set; }
     public string Description { get; set; }
     [Column("image_url")] public string ImageUrl { get; set; }
-    [NotMapped] public ICollection<DrinkTool> DrinkTools;
 }

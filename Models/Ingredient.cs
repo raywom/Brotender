@@ -20,5 +20,4 @@ public class Ingredient
     public string Description { get; set; }
     [Column("image_url")] public string ImageUrl { get; set; }
     [Column("is_alcohol")] public short IsAlcohol { get; set; }
-    [NotMapped] public ICollection<DrinkIngredient> DrinkIngredients;
 }

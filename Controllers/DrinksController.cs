@@ -25,7 +25,24 @@ namespace Brotender.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Drink>>> GetDrinks()
         {
-            return await _context.Drinks.ToListAsync();
+            var drinks = await _context.Drinks.ToListAsync();
+
+            foreach (var drink in drinks)
+            {
+                drink.DrinkIngredients = await _context.DrinkIngredients.Where(x => x.DrinkId == drink.Id).ToListAsync();
+                foreach (var drinkIngredient in drink.DrinkIngredients)
+                {
+                    drinkIngredient.Ingredient = await _context.Ingredients.FindAsync(drinkIngredient.IngredientId);
+                }
+                drink.DrinkTools = await _context.DrinkTools.Where(x => x.DrinkId == drink.Id).ToListAsync();
+                foreach (var drinkTool in drink.DrinkTools)
+                {
+                    drinkTool.Tool = await _context.Tools.FindAsync(drinkTool.ToolId);
+                }
+                drink.DrinkRatings = await _context.DrinkRatings.Where(x => x.DrinkId == drink.Id).ToListAsync();
+            }
+
+            return drinks;
         }
 
         // GET: api/Drinks/5
@@ -33,6 +50,19 @@ namespace Brotender.Controllers
         public async Task<ActionResult<Drink>> GetDrink(int id)
         {
             var drink = await _context.Drinks.FindAsync(id);
+
+            drink.DrinkIngredients = await _context.DrinkIngredients.Where(x => x.DrinkId == id).ToListAsync();
+            foreach (var drinkIngredient in drink.DrinkIngredients)
+            {
+                drinkIngredient.Ingredient = await _context.Ingredients.FindAsync(drinkIngredient.IngredientId);
+            }
+            drink.DrinkTools = await _context.DrinkTools.Where(x => x.DrinkId == id).ToListAsync();
+            foreach (var drinkTool in drink.DrinkTools)
+            {
+                drinkTool.Tool = await _context.Tools.FindAsync(drinkTool.ToolId);
+            }
+            drink.DrinkRatings = await _context.DrinkRatings.Where(x => x.DrinkId == id).ToListAsync();
+            
 
             if (drink == null)
             {

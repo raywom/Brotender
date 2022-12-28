@@ -19,9 +19,10 @@ public class Drink
     [Column("image_url")]
     public string ImageUrl { get; set; }
 
-    public ICollection<DrinkIngredient> DrinkIngredients;
+    public ICollection<DrinkIngredient> DrinkIngredients { get; set; }
 
-    [NotMapped] public ICollection<DrinkRating> DrinkRatings;
+    public ICollection<DrinkRating> DrinkRatings { get; set; }
 
-    [NotMapped] public ICollection<DrinkTool> DrinkTools;
+    public ICollection<DrinkTool> DrinkTools { get; set; }
+    
 }
